@@ -2,7 +2,6 @@ import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import { connection } from './db';
 import { router } from './routes/router';
-
 dotenv.config();
 
 const app: Express = express();
