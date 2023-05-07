@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.recordRouter = void 0;
+const express_1 = require("express");
+const recordController_1 = require("../controllers/recordController");
+const multerMiddleware_1 = require("../middlewares/multerMiddleware");
+const authMiddleware_1 = require("../middlewares/authMiddleware");
+exports.recordRouter = (0, express_1.Router)({});
+exports.recordRouter.post('/create-record', authMiddleware_1.authMiddleWare, multerMiddleware_1.multerMiddleware.single('file'), recordController_1.recordController.createRecord);
+exports.recordRouter.get('/list', authMiddleware_1.authMiddleWare, recordController_1.recordController.getListRecords);
+exports.recordRouter.delete('/delete/:id', authMiddleware_1.authMiddleWare, recordController_1.recordController.deleteRecord);
+exports.recordRouter.put('/update/:id', authMiddleware_1.authMiddleWare, multerMiddleware_1.multerMiddleware.single('file'), recordController_1.recordController.updateRecord);

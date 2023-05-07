@@ -1,0 +1,27 @@
+import { DataTypes, Model } from 'sequelize';
+import { connection } from '../db';
+import { UserType } from '../types/models.types';
+
+export class UserModel extends Model<UserType> {}
+
+UserModel.init(
+  {
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize: connection,
+    tableName: 'users',
+  }
+);
