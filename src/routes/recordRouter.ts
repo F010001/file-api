@@ -11,7 +11,7 @@ recordRouter.post(
   multerMiddleware.single('file'),
   recordController.createRecord
 );
-recordRouter.get('/list', authMiddleWare, recordController.getListRecords);
+recordRouter.get('/list/:id', authMiddleWare, recordController.getListRecords);
 recordRouter.delete(
   '/delete/:id',
   authMiddleWare,
