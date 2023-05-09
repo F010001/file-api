@@ -21,7 +21,7 @@ class RecordController {
 
   async getListRecords(req: Request, res: Response, next: NextFunction) {
     try {
-      return recordService.getRecordsList(req.params.id);
+      return recordService.getRecordsList(req.params.size);
     } catch (error) {
       res.status(500).send({ message: 'Server error' });
     }
