@@ -1,6 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import { connection } from '../db';
 import { UserType } from '../types/models.types';
+import { RecordModel } from './record.model';
 
 export class UserModel extends Model<UserType> {}
 
@@ -25,3 +26,5 @@ UserModel.init(
     tableName: 'users',
   }
 );
+
+UserModel.hasMany(RecordModel);

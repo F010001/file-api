@@ -1,6 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import { connection } from '../db';
 import { RecordType } from '../types/models.types';
+import { UserModel } from './user.model';
 
 export class RecordModel extends Model<RecordType> {}
 
@@ -25,3 +26,5 @@ RecordModel.init(
     tableName: 'records',
   }
 );
+
+RecordModel.belongsTo(UserModel);
