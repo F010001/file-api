@@ -1,4 +1,4 @@
-import { Record } from '../models/record.model';
+import { Record } from '../models/models';
 import { RecordType } from '../types/models.types';
 
 export const recordRepository = {
