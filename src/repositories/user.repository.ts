@@ -1,16 +1,16 @@
-import { UserModel } from '../models/user.model';
+import { User } from '../models/user.model';
 import { UserType } from '../types/models.types';
 
 export const userRepository = {
   async creaUser(newUser: UserType) {
-    return UserModel.create(newUser);
+    return User.create(newUser);
   },
 
   async findUserByEmail(email: string) {
-    return UserModel.findOne({ where: { email } });
+    return User.findOne({ where: { email } });
   },
 
   async findUserById(id: string) {
-    return UserModel.findByPk(id);
+    return User.findByPk(id);
   },
 };

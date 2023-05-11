@@ -1,30 +1,12 @@
 import { DataTypes, Model } from 'sequelize';
 import { connection } from '../db';
 import { RecordType } from '../types/models.types';
-import { UserModel } from './user.model';
+import { User } from './user.model';
 
-export class RecordModel extends Model<RecordType> {}
+export const Record = connection.define('records', {
+  id: { type: DataTypes.STRING, primaryKey: true, autoIncrement: true },
+  message: { type: DataTypes.STRING, unique: true, allowNull: false },
+  authorId: { type: DataTypes.STRING, allowNull: false },
+});
 
-RecordModel.init(
-  {
-    id: {
-      type: DataTypes.STRING,
-      primaryKey: true,
-      allowNull: false,
-    },
-    message: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    authorId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  },
-  {
-    sequelize: connection,
-    tableName: 'records',
-  }
-);
-
-RecordModel.hasOne(UserModel);
+Record.hasOne(User);

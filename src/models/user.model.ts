@@ -1,30 +1,11 @@
 import { DataTypes, Model } from 'sequelize';
 import { connection } from '../db';
-import { UserType } from '../types/models.types';
-import { RecordModel } from './record.model';
+import { Record } from './record.model';
 
-export class UserModel extends Model<UserType> {}
+export const User = connection.define('users', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  email: { type: DataTypes.STRING, unique: true, allowNull: false },
+  password: { type: DataTypes.STRING, allowNull: false },
+});
 
-UserModel.init(
-  {
-    id: {
-      type: DataTypes.STRING,
-      primaryKey: true,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  },
-  {
-    sequelize: connection,
-    tableName: 'users',
-  }
-);
-
-UserModel.hasMany(RecordModel);
+User.hasMany(Record);
