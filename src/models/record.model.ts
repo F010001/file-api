@@ -27,4 +27,4 @@ RecordModel.init(
   }
 );
 
-RecordModel.belongsTo(UserModel);
+RecordModel.hasOne(UserModel);
