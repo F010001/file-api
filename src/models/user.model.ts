@@ -8,4 +8,4 @@ export const User = connection.define('users', {
   password: { type: DataTypes.STRING, allowNull: false },
 });
 
-User.hasMany(Record);
+User.hasMany(Record, { as: 'records' });

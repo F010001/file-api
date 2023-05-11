@@ -8,4 +8,7 @@ export const Record = connection.define('records', {
   authorId: { type: DataTypes.STRING, allowNull: false },
 });
 
-Record.hasOne(User);
+Record.hasOne(User, {
+  foreignKey: 'authorId',
+  as: 'user',
+});
