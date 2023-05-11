@@ -7,3 +7,5 @@ export const Record = connection.define('records', {
   message: { type: DataTypes.STRING, unique: true, allowNull: false },
   authorId: { type: DataTypes.STRING, allowNull: false },
 });
+
+Record.hasOne(User);
